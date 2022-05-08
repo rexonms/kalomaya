@@ -5,10 +5,9 @@ package graph
 
 import (
 	"context"
+	"example/graph/generated"
+	"example/graph/model"
 	"fmt"
-
-	"github.com/digitalocean/sample-golang/graph/generated"
-	"github.com/digitalocean/sample-golang/graph/model"
 )
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
