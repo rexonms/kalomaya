@@ -1,4 +1,7 @@
+# Deployment 
+
 ## Getting Started
+[DigitalOcean](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/overview?i=6e90ac) will trigger a build whenever we merge code to master.
 
 We provide a sample app using Golang that you can deploy on App Platform. These steps will get this sample application running for you using App Platform.
 
