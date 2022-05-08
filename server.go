@@ -18,12 +18,19 @@ func main() {
 	if port == "" {
 		port = defaultPort
 	}
-
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
-
-	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
+	http.Handle("/todo", playground.Handler("GraphQL playground", "/query"))
 	http.Handle("/query", srv)
+	han := http.HandlerFunc(handleRequest)
+	http.Handle("/", han)
 
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
+}
+
+func handleRequest(w http.ResponseWriter, r * http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/text")
+	w.Write([]byte("kalomaya.com"))
+	return
 }
