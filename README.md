@@ -11,8 +11,10 @@
 - [Build/Run Command settings](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/settings/kalomaya?i=6e90ac) `Commands -> Run Command`
 
 # Links
-
+- [Tutorial](https://www.youtube.com/watch?v=FkpCeXbXVhU&ab_channel=RichardHong)
 - [GraphQL](https://github.com/99designs/gqlgen)
+- [Mongo Driver](https://github.com/mongodb/mongo-go-driver)
+
 
 We provide a sample app using Golang that you can deploy on App Platform. These steps will get this sample application running for you using App Platform.
 

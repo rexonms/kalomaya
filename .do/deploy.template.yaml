@@ -1,7 +1,0 @@
-spec:
-  name: example
-  services:
-    - name: web
-      git:
-        branch: main
-        repo_clone_url: https://github.com/rexonms/kalomaya.git

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"example/database"
 	"example/graph"
 	"example/graph/generated"
 	"log"
@@ -14,6 +15,7 @@ import (
 const defaultPort = "8080"
 
 func main() {
+	database.Connect()
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
