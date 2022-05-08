@@ -1,0 +1,6 @@
+name: example
+services:
+  - name: web
+    github:
+      repo: rexonms/kalomaya
+      branch: main
