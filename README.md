@@ -18,7 +18,8 @@
 
 # Links
 
-- [Tutorial](https://www.youtube.com/watch?v=FkpCeXbXVhU&ab_channel=RichardHong)
+- [Video Series](https://www.youtube.com/playlist?list=PL3eAkoh7fypr8zrkiygiY1e9osoqjoV9w)
+- ~~[Tutorial](https://www.youtube.com/watch?v=FkpCeXbXVhU&ab_channel=RichardHong)~~
 - [GraphQL](https://github.com/99designs/gqlgen)
 - [Mongo Driver](https://github.com/mongodb/mongo-go-driver)
 
