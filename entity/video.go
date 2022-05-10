@@ -7,7 +7,7 @@ type Person struct {
 	Email		string 	`json:"email" validate:"required,email"`
 }
 type Video struct {
-	Title string `json:"title" binding:"required"`
+	Title string `json:"title" binding:"min=2,max=10" validate:"is-cool"`
 	Description string `json:"description" binding:"max=10"`
 	URL 		string `json:"url" binding:"required,url"`
 	Author		Person `json:"Author" binding:"required"`
