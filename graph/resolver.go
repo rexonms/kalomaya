@@ -1,6 +1,6 @@
 package graph
 
-import "example/graph/model"
+import "github.com/rexonms/kalomaya/graph/model"
 
 // This file will not be regenerated automatically.
 //

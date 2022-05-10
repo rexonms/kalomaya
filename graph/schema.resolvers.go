@@ -5,10 +5,11 @@ package graph
 
 import (
 	"context"
-	"example/graph/generated"
-	"example/graph/model"
 	"fmt"
 	"strconv"
+
+	"github.com/rexonms/kalomaya/graph/generated"
+	"github.com/rexonms/kalomaya/graph/model"
 )
 
 func (r *mutationResolver) UpsertCharacter(ctx context.Context, input model.CharacterInput) (*model.Character, error) {

@@ -1,4 +1,4 @@
-module example
+module github.com/rexonms/kalomaya
 
 go 1.18
 
