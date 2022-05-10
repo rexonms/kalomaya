@@ -57,7 +57,7 @@ After clicking the **Deploy to DigitalOcean** button or completing the instructi
 
 If you followed the steps to fork the repo and used your own copy when deploying the app, you can push changes to your fork and see App Platform automatically re-deploy the update to your app. During these automatic deployments, your application will never pause or stop serving request because App Platform offers zero-downtime deployments.
 
-Here's an example code change you can make for this app:
+Here's an github.com/rexonms/kalomaya code change you can make for this app:
 
 1. Edit `main.go` and replace the "Hello!" greeting on line 32 with a different greeting.
 1. Commit the change to the `main` branch. Normally it's a better practice to create a new branch for your change and then merge that branch to `main` after review, but for this demo you can commit to the `main` branch directly.

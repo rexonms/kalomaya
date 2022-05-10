@@ -1,6 +1,6 @@
 package service
 
-import "example/entity"
+import "github.com/rexonms/kalomaya/entity"
 
 type VideoService interface {
 	Save(entity.Video) entity.Video
