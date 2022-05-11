@@ -1,1 +1,1 @@
-web: bin/
+web: bin/github.com/rexonms/kalomaya
