@@ -29,23 +29,34 @@ func main() {
 	// https://www.youtube.com/watch?v=qR0WnWL2o1Q&list=PL3eAkoh7fypr8zrkiygiY1e9osoqjoV9w&ab_channel=PragmaticReviews
 	setupLogOutput()
 	server := gin.New()
+	server.Static("/css", "./templates/css")
+	server.LoadHTMLGlob("templates/*html")
+
 	server.Use(gin.Recovery(),middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump()) // middleware
 
-
-	server.GET("/videos", func(ctx *gin.Context){
-		ctx.JSON(200, videoController.FindAll())
-	})
-	server.POST("/videos", func(ctx *gin.Context){
-
-		err := videoController.Save(ctx)
-		fmt.Println(err)
-
-		if err != nil {
+	apiRoutes := server.Group("/api")
+	{
+		apiRoutes.GET("/videos", func(ctx *gin.Context){
+			ctx.JSON(200, videoController.FindAll())
+		})
+		apiRoutes.POST("/videos", func(ctx *gin.Context){
+	
+			err := videoController.Save(ctx)
 			fmt.Println(err)
-			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		} else {
-			ctx.JSON(http.StatusOK, gin.H{"message":"Video input is valid"})
-		}
-	})
+	
+			if err != nil {
+				fmt.Println(err)
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			} else {
+				ctx.JSON(http.StatusOK, gin.H{"message":"Video input is valid"})
+			}
+		})
+	}
+	viewRoutes := server.Group("/view")
+	{
+		viewRoutes.GET("/videos", videoController.ShowAll)
+	}
+
+	
 	server.Run(":8080")
 }
