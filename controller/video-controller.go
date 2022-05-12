@@ -15,6 +15,7 @@ type VideoController interface {
 	FindAll() []entity.Video
 	Save(ctx *gin.Context) error
 	ShowAll(ctx *gin.Context)
+	ShowIndex(ctx *gin.Context)
 }
 
 type controller struct {
@@ -57,4 +58,10 @@ func (c *controller) ShowAll(ctx *gin.Context) {
 		"videos": videos,
 	}
 	ctx.HTML(http.StatusOK, "index.html", data)
+}
+
+func (c *controller) ShowIndex(ctx *gin.Context) {
+	
+	// ctx.HTML(http.StatusOK, "index.html", nil)
+	ctx.Writer.WriteHeader(204)
 }

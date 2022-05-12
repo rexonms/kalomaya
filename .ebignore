@@ -1,0 +1,27 @@
+# Ignore source files
+
+.vscode
+Procfile
+gqlgen.yml
+README.md
+Buildfile
+gin.log
+controller/
+database/
+entity/
+graph/
+middlewares/
+service/
+templates/
+validators/
+build.sh
+Buildfile
+server.go
+tools.go
+go.mod
+go.sum
+Dockerfile
+
+#Ignore Git files
+.git
+.gitignore
