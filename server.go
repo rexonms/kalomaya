@@ -11,7 +11,6 @@ import (
 	"github.com/rexonms/kalomaya/service"
 
 	"github.com/gin-gonic/gin"
-	gindump "github.com/tpkeeper/gin-dump"
 )
 
 
@@ -32,10 +31,11 @@ func main() {
 	server.Static("/css", "./templates/css")
 	server.LoadHTMLGlob("templates/*html")
 
-	server.Use(gin.Recovery(),middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump()) // middleware
+	// server.Use(gin.Recovery(),middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump()) // middleware
 
 	apiRoutes := server.Group("/api")
 	{
+		apiRoutes.Use(gin.Recovery(), middlewares.BasicAuth()) // middleware
 		apiRoutes.GET("/videos", func(ctx *gin.Context){
 			ctx.JSON(200, videoController.FindAll())
 		})
@@ -52,11 +52,20 @@ func main() {
 			}
 		})
 	}
+	rootRoutes := server.Group("/")
+	{
+		rootRoutes.GET("/", videoController.ShowAll)
+		
+	}
 	viewRoutes := server.Group("/view")
 	{
 		viewRoutes.GET("/videos", videoController.ShowAll)
+		
 	}
 
-	
-	server.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+	server.Run(":" + port)
 }

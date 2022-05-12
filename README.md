@@ -11,9 +11,53 @@
     $ go run github.com/99designs/gqlgen generate
 ```
 
+# Docker
+
+```
+# Remove all images
+$ docker system prune -a
+# Build an image
+$ docker build --tag rexonms/kalomaya .
+
+# View images
+$ docker images
+
+# Run docker locally
+$ docker run -p 8000:8000 rexonms/kalomaya
+# validate by going to localhost:8000
+
+# push the container to dockerhub
+$ docker push rexonms/kalomaya:latest
+```
+
+# Push to eb
+
+```
+# Make sure all of the source is ignored
+$ eb init
+# select 1) us-east-1 : US East (N. Virginia)
+# Get access key and ID from https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/security_credentials
+# Enter Application Name or select one
+# Select 1) Docker running on 64bit Amazon Linux 2
+# Code commit n
+# SSH n
+# check the application in https://us-east-1.console.aws.amazon.com/elasticbeanstalk/home?region=us-east-1#/applications
+
+```
+
+# Create environments
+
+```
+$ eb create --single
+$ Y
+$ Y
+$ N
+```
+
 ## Deployment
 
 - [DigitalOcean](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/overview?i=6e90ac) will trigger a build whenever we merge code to main.
+- [AWS - Elastic Beanstalk](https://us-east-1.console.aws.amazon.com/elasticbeanstalk/home?region=us-east-1#/gettingStarted)
 - [Build/Run Command settings](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/settings/kalomaya?i=6e90ac) `Commands -> Run Command`
 
 # Links
