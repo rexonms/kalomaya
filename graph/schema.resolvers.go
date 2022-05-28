@@ -5,9 +5,10 @@ package graph
 
 import (
 	"context"
-	"example/graph/generated"
-	"example/graph/model"
 	"fmt"
+
+	"github.com/rexonms/kalomaya/graph/generated"
+	"github.com/rexonms/kalomaya/graph/model"
 )
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
