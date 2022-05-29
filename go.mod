@@ -6,6 +6,7 @@ require (
 	github.com/99designs/gqlgen v0.17.5
 	github.com/gin-gonic/gin v1.7.7
 	github.com/vektah/gqlparser/v2 v2.4.2
+	go.mongodb.org/mongo-driver v1.9.1
 )
 
 require (
