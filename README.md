@@ -2,10 +2,10 @@
 
 # Dev
 
-    // hot reload
+    // nodemon
     $ nodemon --exec go run server.go --signal SIGTERM
 
-    // docker no hot reload
+    // docker
     $ docker-compose up --build
 
 - [gqlgen](https://gqlgen.com/getting-started/)
