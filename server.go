@@ -6,7 +6,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/rexonms/go/greet"
-	"github.com/rexonms/kalomaya/http"
 )
 
 const defaultPort = ":8080"
@@ -63,8 +62,13 @@ func main() {
 	// greeting := "Hi there!"
 	// fmt.Println([]byte(greeting))
 	server := gin.Default()
-	 server.GET("/", http.PlaygroundHandler())
-	 server.POST("/query", http.GraphQLHandler())
+	//  server.GET("/", http.PlaygroundHandler())
+	//  server.POST("/query", http.GraphQLHandler())
+	server.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": greet.Hello(),
+		})
+	})
 	 err := server.Run(port)
 	 if err != nil {
 		// handle your error here
