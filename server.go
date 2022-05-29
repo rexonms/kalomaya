@@ -8,7 +8,7 @@ import (
 	"github.com/rexonms/go/greet"
 )
 
-const defaultPort = ":8080"
+const defaultPort = ":8000"
 
 func main() {
 	port := os.Getenv("PORT")
