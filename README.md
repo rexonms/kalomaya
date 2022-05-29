@@ -2,7 +2,11 @@
 
 # Dev
 
+    // hot reload
     $ nodemon --exec go run server.go --signal SIGTERM
+
+    // docker no hot reload
+    $ docker-compose up --build
 
 - [gqlgen](https://gqlgen.com/getting-started/)
 
@@ -24,3 +28,14 @@
 - [DigitalOcean](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/overview?i=6e90ac) will trigger a build whenever we merge code to main.
 - ~~[AWS - Elastic Beanstalk](https://us-east-1.console.aws.amazon.com/elasticbeanstalk/home?region=us-east-1#/gettingStarted)~~
 - ~~[Build/Run Command settings](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/settings/kalomaya?i=6e90ac) `Commands -> Run Command`~~
+
+## Docker [builds](https://docs.docker.com/language/golang/build-images/)
+
+```
+    $ docker build --tag rexonms/kalomaya .                                         // build an image
+    $ docker image ls                                                               // display all images
+    $ docker image rm rexonms/kalomaya:lastest                                      // remove image
+    $ docker build -t rexonms/kalomaya:multistage -f Dockerfile.multistage .        // multi stage
+    $ docker ps                                                                     // list containers
+    $ docker stop {NAME}                                                            // stop a container
+```
