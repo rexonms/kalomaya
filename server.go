@@ -5,32 +5,29 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/rexonms/go/greet"
 	"github.com/rexonms/kalomaya/http"
 )
 
 const defaultPort = ":8080"
 
-// type person struct {
-// 	firstName string
-// 	lastName string
-// }
-
 func main() {
-	loggedUser := me {
-		_id: "61975a77f25626d3530d733f", 
-		email : "53863c83-f221-4a8f-b70c-73fa9a5a6932@guest.com", 
-		sub : "53863c83-f221-4a8f-b70c-73fa9a5a6932", 
-		subscriptionType : "G1", 
-		downPayment : 25, 
-		interestRate : 3.5, 
-		loanYear : 30, 
-		subscriptionHistory: nil, 
-		calculatedPropertyList : nil, 
-		favoritePropertyList : nil, 
-		searchedQueryList : nil, 
-	}
-	fmt.Println(loggedUser)
-	fmt.Println(loggedUser.getEmail())
+	fmt.Println(greet.Hello())
+	// loggedUser := me {
+	// 	_id: "61975a77f25626d3530d733f", 
+	// 	email : "53863c83-f221-4a8f-b70c-73fa9a5a6932@guest.com", 
+	// 	sub : "53863c83-f221-4a8f-b70c-73fa9a5a6932", 
+	// 	subscriptionType : "G1", 
+	// 	downPayment : 25, 
+	// 	interestRate : 3.5, 
+	// 	loanYear : 30, 
+	// 	subscriptionHistory: nil, 
+	// 	calculatedPropertyList : nil, 
+	// 	favoritePropertyList : nil, 
+	// 	searchedQueryList : nil, 
+	// }
+	// fmt.Println(loggedUser)
+	// fmt.Println(loggedUser.getEmail())
 
 	// Print even or odd 
 	// myInts := []int{0,1,2,3,4,5,6,7,8,9,10}
@@ -48,12 +45,12 @@ func main() {
 	// fmt.Println(alex)
 
 
-	cards := newDeckFromFile("MyCards")
-	cards.shuffle()
-	// fmt.Println(cards.toString())
-	// cards.saveToFile("MyCards")
+	// cards := newDeckFromFile("MyCards")
+	// cards.shuffle()
+	// // fmt.Println(cards.toString())
+	// // cards.saveToFile("MyCards")
 
-	cards.print()
+	// cards.print()
 	// hand, remainingDeck := deal(cards, 10)
 	// hand.print()
 	// remainingDeck.print()
