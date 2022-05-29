@@ -2,70 +2,73 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"net/http"
 	"os"
 
-	"github.com/rexonms/kalomaya/controller"
-	"github.com/rexonms/kalomaya/middlewares"
-	"github.com/rexonms/kalomaya/service"
-
 	"github.com/gin-gonic/gin"
+	"github.com/rexonms/go/greet"
+	"github.com/rexonms/kalomaya/http"
 )
 
-
-var (
-	videoService service.VideoService = service.New()
-	videoController controller.VideoController = controller.New(videoService)
-)
-
-func setupLogOutput() {
-	f, _ := os.Create("gin.log")
-	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
-}
+const defaultPort = ":8080"
 
 func main() {
-	// https://www.youtube.com/watch?v=qR0WnWL2o1Q&list=PL3eAkoh7fypr8zrkiygiY1e9osoqjoV9w&ab_channel=PragmaticReviews
-	setupLogOutput()
-	server := gin.New()
-	server.Static("/css", "./templates/css")
-	server.LoadHTMLGlob("templates/*html")
+	fmt.Println(greet.Hello())
+	// loggedUser := me {
+	// 	_id: "61975a77f25626d3530d733f", 
+	// 	email : "53863c83-f221-4a8f-b70c-73fa9a5a6932@guest.com", 
+	// 	sub : "53863c83-f221-4a8f-b70c-73fa9a5a6932", 
+	// 	subscriptionType : "G1", 
+	// 	downPayment : 25, 
+	// 	interestRate : 3.5, 
+	// 	loanYear : 30, 
+	// 	subscriptionHistory: nil, 
+	// 	calculatedPropertyList : nil, 
+	// 	favoritePropertyList : nil, 
+	// 	searchedQueryList : nil, 
+	// }
+	// fmt.Println(loggedUser)
+	// fmt.Println(loggedUser.getEmail())
 
-	// server.Use(gin.Recovery(),middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump()) // middleware
+	// Print even or odd 
+	// myInts := []int{0,1,2,3,4,5,6,7,8,9,10}
 
-	apiRoutes := server.Group("/api")
-	{
-		apiRoutes.Use(gin.Recovery(), middlewares.BasicAuth()) // middleware
-		apiRoutes.GET("/videos", func(ctx *gin.Context){
-			ctx.JSON(200, videoController.FindAll())
-		})
-		apiRoutes.POST("/videos", func(ctx *gin.Context){
-	
-			err := videoController.Save(ctx)
-			fmt.Println(err)
-	
-			if err != nil {
-				fmt.Println(err)
-				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			} else {
-				ctx.JSON(http.StatusOK, gin.H{"message":"Video input is valid"})
-			}
-		})
-	}
-	rootRoutes := server.Group("/")
-	{
-		rootRoutes.GET("/", videoController.ShowAll)
-		
-	}
-	viewRoutes := server.Group("/view")
-	{
-		viewRoutes.GET("/videos", videoController.ShowAll)
-		
-	}
+	// for _, myInt := range myInts{
+	// 	if myInt % 2 == 0 {
+	// 		fmt.Println(myInt,  " is even")
+	// 	}  else {
+	// 		fmt.Println(myInt,  " is odd")
+	// 	}
+	// }
+
+	// Structs 
+	// alex := person{firstName: "Alex", lastName: "Smith"}
+	// fmt.Println(alex)
+
+
+	// cards := newDeckFromFile("MyCards")
+	// cards.shuffle()
+	// // fmt.Println(cards.toString())
+	// // cards.saveToFile("MyCards")
+
+	// cards.print()
+	// hand, remainingDeck := deal(cards, 10)
+	// hand.print()
+	// remainingDeck.print()
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8000"
+		port = defaultPort
 	}
-	server.Run(":" + port)
+
+	// greeting := "Hi there!"
+	// fmt.Println([]byte(greeting))
+	server := gin.Default()
+	 server.GET("/", http.PlaygroundHandler())
+	 server.POST("/query", http.GraphQLHandler())
+	 err := server.Run(port)
+	 if err != nil {
+		// handle your error here
+		fmt.Printf(`Error while running the server!`)
+		fmt.Println(err)
+	  }
 }

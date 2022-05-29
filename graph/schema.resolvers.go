@@ -6,7 +6,6 @@ package graph
 import (
 	"context"
 	"fmt"
-	"strconv"
 
 	"github.com/rexonms/kalomaya/graph/generated"
 	"github.com/rexonms/kalomaya/graph/model"
