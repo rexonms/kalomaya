@@ -19,6 +19,27 @@
     $ go test               // Runs any tests associated with the current project
 ```
 
+## [Docker](https://docs.docker.com/language/golang/build-images/)
+
+```
+// $ docker build --tag rexonms/kalomaya .
+$ docker build -t rexonms/kalomaya:multistage -f Dockerfile.multistage .
+$ docker image ls
+$ docker run -d -p 8080:8080 rexonms/kalomaya
+$ docker ps // list the containers
+$ docker stop {NAMES}
+$ docker restart {NAMES}
+$ docker compose up
+$ docker compose down
+```
+
+#### Database - [Mongo](https://hub.docker.com/_/mongo)
+
+```
+docker run --name some-mongo -d mongo:tag
+
+```
+
 ## Deployment
 
 - [DigitalOcean](https://cloud.digitalocean.com/apps/a84ca4a3-00f1-4d72-b564-ce2ebf32c56b/overview?i=6e90ac) will trigger a build whenever we merge code to main.

@@ -1,0 +1,35 @@
+# syntax=docker/dockerfile:1
+
+##
+## Build
+##
+# Alpine is chosen for its small footprint
+# compared to Ubuntu
+# FROM golang:1.18.2-alpine
+FROM golang:1.18.2-buster AS build
+
+
+WORKDIR /app
+
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /rexonms/kalomaya
+
+##
+## Deploy
+##
+FROM gcr.io/distroless/base-debian10
+
+WORKDIR /
+
+COPY --from=build /rexonms/kalomaya /rexonms/kalomaya
+
+EXPOSE 8080
+
+USER nonroot:nonroot
+
+ENTRYPOINT ["/rexonms/kalomaya"]

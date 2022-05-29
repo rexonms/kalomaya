@@ -1,5 +1,8 @@
-# Start from the latest golang base image
-FROM golang:latest
+# syntax=docker/dockerfile:1
+
+# Alpine is chosen for its small footprint
+# compared to Ubuntu
+FROM golang:1.18.2-alpine
 
 # Add Maitainer Info
 LABEL maitainer="rexon <rexonms@gmail.com>"
@@ -7,29 +10,14 @@ LABEL maitainer="rexon <rexonms@gmail.com>"
 # Set the Current Working Directory inside the container
 WORKDIR /app
 
-# Copy Go Modules dependency requirements file
-COPY go.mod .
-
-# Copy Go Modules expected hashes file
-COPY go.sum .
-
-# Download dependencies 
+# Download necessary Go modules
+COPY go.mod ./
+COPY go.sum ./
 RUN go mod download
 
 # Copy all the app sources (recursively copies files and directories from the host into container folder)
-COPY . .
+COPY *.go ./
 
-# Set http port
-ENV PORT 8000
-
-# Build the app
-RUN go build
-
-# Remove source files
-RUN find . -name "*.go" -type f -delete
-
-# Make port 8000 available to the world outside this container 
-EXPOSE ${PORT}
-
-# Run the app
-CMD ["./kalomaya"]
+RUN go build -o /rexonms/kalomaya
+EXPOSE 8080
+CMD [ "/rexonms/kalomaya" ]
