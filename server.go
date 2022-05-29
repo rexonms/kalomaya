@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -24,10 +23,10 @@ func main() {
 			"foo": "bazz",
 		})
 	})
-	 err := server.Run(port)
-	 if err != nil {
-		// handle your error here
-		fmt.Printf(`Error while running the server!`)
-		fmt.Println(err)
-	  }
+	  server.Run(port)
+	//  if err != nil {
+	// 	// handle your error here
+	// 	fmt.Printf(`Error while running the server!`)
+	// 	fmt.Println(err)
+	//   }
 }
