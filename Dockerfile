@@ -1,5 +1,10 @@
 # syntax=docker/dockerfile:1
-FROM golang:1.18-alpine
+## Multi Stage
+##
+## Build
+##
+FROM golang:1.18-buster AS build
+
 WORKDIR /app
 
 COPY go.mod ./
@@ -9,15 +14,14 @@ RUN go mod download
 COPY *.go ./
 RUN go build -o /rexonms/kalomaya
 
+##
+## Deploy
+##
+FROM gcr.io/distroless/base-debian10
+WORKDIR /
+
+COPY --from=build /rexonms/kalomaya /rexonms/kalomaya
 EXPOSE 8080
+USER nonroot:nonroot
 
-CMD [ "/rexonms/kalomaya" ]
-
-# Remove source files
-RUN find . -name "*.go" -type f -delete
-
-# Make port 8000 available to the world outside this container 
-EXPOSE 8080
-
-# Run the app
-CMD ["./rexonms/kalomaya"]
+ENTRYPOINT ["/rexonms/kalomaya"]
