@@ -1,6 +1,6 @@
 dev: 
-	go run httpd/server.go
+	go run main.go
 dev-watch: 
-	nodemon --exec go run httpd/server.go --signal SIGTERM
+	nodemon --exec go run main.go --signal SIGTERM
 test: 
 	go test -cover ./...

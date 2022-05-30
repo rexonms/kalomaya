@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/rexonms/go/greet"
-	"github.com/rexonms/kalomaya/httpd/handler"
 	"github.com/rexonms/kalomaya/platform/newsfeed"
+	"github.com/rexonms/kalomaya/routes/handler"
 )
 
 func main() {
