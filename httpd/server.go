@@ -7,7 +7,6 @@ import (
 	"github.com/rexonms/kalomaya/platform/newsfeed"
 )
 
-
 func main() {
 	server := gin.Default()
 	server.GET("/", func(c *gin.Context) {
@@ -20,5 +19,5 @@ func main() {
 	server.GET("/newsfeed", handler.GetNewsfeed(feed))
 	server.POST("/newsfeed", handler.PostNewsfeed(feed))
 
-	server.Run()
+	server.Run(":8080")
 }
