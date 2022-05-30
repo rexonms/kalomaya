@@ -2,8 +2,9 @@
 
 # Dev
 
-    // nodemon
-    $ nodemon --exec go run server.go --signal SIGTERM
+    // script
+    make dev
+    make test
 
     // docker
     $ docker-compose up --build
@@ -41,3 +42,4 @@
 # Links
 
 - [gqlgen](https://gqlgen.com/getting-started/)
+- [gin tutorial - express](https://www.youtube.com/watch?v=LOn1GUsjOF4&ab_channel=DavidAlsh)
