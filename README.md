@@ -1,13 +1,45 @@
-[site](https://kalomaya-go-9vrl2.ondigitalocean.app/)
+# Development
 
-# Dev
+The monorepo has both Server and the Client Code. For UI development run the go server and then the React App
 
-    // script
-    make dev
-    make test
+**Run Go Server**
 
-    // docker
-    $ docker-compose up --build
+```
+$ make dev-watch
+```
+
+validate by going to [health route](http://localhost:8080/health)
+
+**Run React Client**
+
+```
+$ cd client
+$ yarn start
+```
+
+validate by going to [client root](http://localhost:3000)
+
+**Loading the Client bundle build via Go Server**
+
+```
+$ cd client
+$ yarn build
+```
+
+Validate by going to [Server Root](http://localhost:8080)
+
+# Testing
+
+**Go**
+$ make test
+
+**Client**
+
+```
+$ cd client
+$ yarn test
+
+```
 
 # Commands
 
@@ -30,7 +62,10 @@
 
 # Docker [builds](https://docs.docker.com/language/golang/build-images/)
 
+- [Local and Prod tutorial](https://semaphoreci.com/community/tutorials/how-to-deploy-a-go-web-application-with-docker)
+
 ```
+    $ docker-compose up --build
     $ docker build --tag rexonms/kalomaya .                                         // build an image
     $ docker image ls                                                               // display all images
     $ docker image rm rexonms/kalomaya:lastest                                      // remove image
@@ -41,5 +76,8 @@
 
 # Links
 
+- [site](https://kalomaya-go-9vrl2.ondigitalocean.app/)
 - [gqlgen](https://gqlgen.com/getting-started/)
 - [gin tutorial - express](https://www.youtube.com/watch?v=LOn1GUsjOF4&ab_channel=DavidAlsh)
+
+# [Go with React](https://medium.com/@synapticsynergy/serving-a-react-app-with-golang-using-gin-c6402ee64a4b)

@@ -13,6 +13,11 @@ RUN go mod download
 
 COPY *.go ./
 RUN go build -o /rexonms/kalomaya
+RUN go env
+
+
+
+
 
 ##
 ## Deploy
