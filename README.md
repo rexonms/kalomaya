@@ -26,12 +26,15 @@ $ cd client
 $ yarn build
 ```
 
-Validate by going to [Server Root](http://localhost:8080)
+validate by going to [server root](http://localhost:8080)
 
 # Testing
 
 **Go**
+
+```
 $ make test
+```
 
 **Client**
 
@@ -44,14 +47,14 @@ $ yarn test
 # Commands
 
 ```
-    $ go test               // runs all the test that under *_test.go
-    $ golangci-lint run     // runs linter
-    $ go build              // Compiles a bunch of go source code files
-    $ go run                // Complies and executes on or two files
-    $ go fmt                // Formats all the code in each file in the current directory
-    $ go install            // Compiles and "installs" a packages
-    $ go get                // Downloads the raw source code of someone else's packages
-    $ go test               // Runs any tests associated with the current project
+$ go test               // runs all the test that under *_test.go
+$ golangci-lint run     // runs linter
+$ go build              // Compiles a bunch of go source code files
+$ go run                // Complies and executes on or two files
+$ go fmt                // Formats all the code in each file in the current directory
+$ go install            // Compiles and "installs" a packages
+$ go get                // Downloads the raw source code of someone else's packages
+$ go test               // Runs any tests associated with the current project
 ```
 
 # Deployment
@@ -65,13 +68,13 @@ $ yarn test
 - [Local and Prod tutorial](https://semaphoreci.com/community/tutorials/how-to-deploy-a-go-web-application-with-docker)
 
 ```
-    $ docker-compose up --build
-    $ docker build --tag rexonms/kalomaya .                                         // build an image
-    $ docker image ls                                                               // display all images
-    $ docker image rm rexonms/kalomaya:lastest                                      // remove image
-    $ docker build -t rexonms/kalomaya:multistage -f Dockerfile.multistage .        // multi stage
-    $ docker ps                                                                     // list containers
-    $ docker stop {NAME}                                                            // stop a container
+$ docker-compose up --build
+$ docker build --tag rexonms/kalomaya .                                         // build an image
+$ docker image ls                                                               // display all images
+$ docker image rm rexonms/kalomaya:lastest                                      // remove image
+$ docker build -t rexonms/kalomaya:multistage -f Dockerfile.multistage .        // multi stage
+$ docker ps                                                                     // list containers
+$ docker stop {NAME}                                                            // stop a container
 ```
 
 # Links
