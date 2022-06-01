@@ -13,8 +13,15 @@ validate by going to [health route](http://localhost:8080/health)
 **Run React Client**
 
 ```
-$ cd client
-$ yarn start
+$ make react-watch
+```
+
+**Using docker**
+
+```bash
+$ docker-compose up -d
+open http://localhost:3000 #for react
+open http://localhost:8080/api #for go
 ```
 
 validate by going to [client root](http://localhost:3000)
