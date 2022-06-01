@@ -1,13 +1,12 @@
-# https://github.com/shakyShane/cra-docker/blob/master/Dockerfile
-# 1. Use the node apline image as the base stage of a multi-stage routine
-FROM node:16.15.0-alpine as base
-
-# 2. Set the working directory to /client
-WORKDIR /client
-
-# 3. Copy both package.json and package-lock.json into /client in the image's filesystem
-COPY package*.json yarn.lock ./
-
-RUN  yarn 
+FROM node:16.15.0-alpine AS builder
+WORKDIR /app
+COPY package.json ./
+RUN npm install
 COPY . ./
-RUN yarn build
+RUN npm run build
+
+FROM nginx:1.19.0
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=builder /app/build .
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
