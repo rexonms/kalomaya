@@ -1,6 +1,6 @@
 # Development
 
-The monorepo has both Server and the Client Code. For UI development run the go server and then the React App
+The monorepo has both Server and the Client Code. For UI development run the Go server and then the React App
 
 **Run Go Server**
 
@@ -20,8 +20,8 @@ $ make react-watch
 
 ```bash
 $ docker-compose up -d
-open http://localhost:3000 #for react
-open http://localhost:8080/api #for go
+open http://localhost:3000 #for React
+open http://localhost:8080/api #for Go
 ```
 
 validate by going to [client root](http://localhost:3000)
@@ -50,6 +50,11 @@ $ cd client
 $ yarn test
 
 ```
+
+# Production
+
+- [client](https://kalomaya.com)
+- [server](https://api.kalomaya.com/health)
 
 # Commands
 
