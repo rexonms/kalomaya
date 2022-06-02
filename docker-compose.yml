@@ -11,5 +11,7 @@ services:
     build:
       context: ./client/
       dockerfile: ./dev.Dockerfile
+    volumes:
+      - ./client:/app
     ports:
       - '3000:3000'
