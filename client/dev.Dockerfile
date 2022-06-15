@@ -2,7 +2,7 @@ FROM node:16.15.0-alpine
 ENV NODE_ENV development
 WORKDIR /app
 COPY package.json ./
-RUN npm install
+RUN yarn 
 COPY . ./
 
 EXPOSE 3000
